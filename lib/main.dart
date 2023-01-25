@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         'home': (context) => HomeScreen(),
         'mapa': (context) => MapScreen()
       },
+      theme: ThemeData.dark(),
     );
   }
 }

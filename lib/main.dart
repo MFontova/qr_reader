@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'QR Reader',
-      initialRoute: 'mapa',
+      initialRoute: 'home',
       routes: {
         'home': (context) => HomeScreen(),
         'mapa': (context) => MapScreen()

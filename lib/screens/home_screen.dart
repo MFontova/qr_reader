@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/providers/db_provider.dart';
 import 'package:qr_reader/screens/directions_screen.dart';
 import 'package:qr_reader/screens/maps_history_screen.dart';
 import 'package:qr_reader/widgets/scan_button.dart';
@@ -33,6 +34,9 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
 
     final currentIndex = uiProvider.selectedMenuOpt;
+
+    // TODO temporal leer db
+    DBProvider.db.database;
 
     switch (currentIndex) {
       case 0:

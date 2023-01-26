@@ -9,9 +9,10 @@ class ScanButton extends StatelessWidget {
     return FloatingActionButton(
       elevation: 0,
       onPressed: () async {
-        String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-            '#e2001a', 'Cancelar', false, ScanMode.QR);
+        // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+        //     '#e2001a', 'Cancelar', false, ScanMode.QR);
 
+        final barcodeScanRes = 'https://google.com';
         print(barcodeScanRes);
       },
       child: Icon(Icons.filter_center_focus),

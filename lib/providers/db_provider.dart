@@ -53,7 +53,7 @@ class DBProvider {
     final db = await database;
 
     final res = await db!.rawInsert('''
-      INSERT INTO scans (id, tipo, valor)
+      INSERT INTO scans (id, type, valor)
       VALUES ($id, '$tipo', '$valor')
     ''');
 
@@ -85,7 +85,8 @@ class DBProvider {
 
   Future<List<ScanModel>> getScansByType(String tipo) async {
     final db = await database;
-    final res = await db!.query('scans', where: 'tipo = ?', whereArgs: [tipo]);
+    final res =
+        await db!.rawQuery('''SELECT * FROM scans WHERE type = '$tipo' ''');
 
     return res.isNotEmpty
         ? res.map((scan) => ScanModel.fromJson(scan)).toList()

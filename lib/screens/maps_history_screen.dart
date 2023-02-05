@@ -5,8 +5,21 @@ class MapsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Maps History Screen'),
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(
+          Icons.map,
+          color: Theme.of(context).primaryColor,
+        ),
+        title: Text('https://google.es'),
+        subtitle: Text('ID: 1'),
+        trailing: Icon(
+          Icons.keyboard_arrow_right,
+          color: Colors.grey,
+        ),
+        onTap: () => print('abrir algo...'),
+      ),
     );
   }
 }

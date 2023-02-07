@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/providers/scan_list_provider.dart';
+import 'package:qr_reader/utils/utils.dart';
 
 class ScanButton extends StatelessWidget {
   const ScanButton({super.key});
@@ -14,12 +15,18 @@ class ScanButton extends StatelessWidget {
         // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         //     '#e2001a', 'Cancelar', false, ScanMode.QR);
 
-        final barcodeScanRes = 'https://google.com';
+        // final barcodeScanRes = 'geo:41.394728,2.148540';
+        final barcodeScanRes = 'https://flutter.dev';
+
+        if (barcodeScanRes == '-1') {
+          return;
+        }
 
         final scanListProvider =
             Provider.of<ScanListProvider>(context, listen: false);
-        scanListProvider.nuevoScan(barcodeScanRes);
-        scanListProvider.nuevoScan('geo:15.33,15.77');
+        final nuevoScan = await scanListProvider.nuevoScan(barcodeScanRes);
+
+        launchURL(context, nuevoScan);
       },
       child: Icon(Icons.filter_center_focus),
     );

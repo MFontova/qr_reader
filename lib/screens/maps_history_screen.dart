@@ -11,17 +11,27 @@ class MapsScreen extends StatelessWidget {
 
     return ListView.builder(
       itemCount: scanListProvider.scans.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(
-          Icons.map,
+      itemBuilder: (context, index) => Dismissible(
+        key: UniqueKey(),
+        background: Container(
+          color: Colors.red,
         ),
-        title: Text(scanListProvider.scans[index].valor),
-        subtitle: Text(scanListProvider.scans[index].id.toString()),
-        trailing: Icon(
-          Icons.keyboard_arrow_right,
-          color: Colors.grey,
+        onDismissed: (DismissDirection direction) {
+          Provider.of<ScanListProvider>(context, listen: false)
+              .borrarScanPorId(scanListProvider.scans[index].id);
+        },
+        child: ListTile(
+          leading: Icon(
+            Icons.map,
+          ),
+          title: Text(scanListProvider.scans[index].valor),
+          subtitle: Text(scanListProvider.scans[index].id.toString()),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.grey,
+          ),
+          onTap: () => print(scanListProvider.scans[index].id),
         ),
-        onTap: () => print(scanListProvider.scans[index].id),
       ),
     );
   }
